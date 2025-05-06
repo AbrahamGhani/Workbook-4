@@ -2,16 +2,16 @@ package com.pluralsight;
 
 public class Employee {
 
-    /*
-getTotalPay
-getRegularHours
-getOvertimeHours
-     */
+
     long employeeId;
     String name;
     String department;
     double payRate;
     double hoursWorked;
+    double punchIn;
+    double punchOut;
+
+
 
     public Employee(long employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -57,6 +57,26 @@ getOvertimeHours
         this.payRate = payRate;
     }
 
+    public double getPunchIn() {
+        return punchIn;
+    }
+
+    public void setPunchIn(double punchIn) {
+        this.punchIn = punchIn;
+    }
+
+    public double getPunchOut() {
+        return punchOut;
+    }
+
+    public void setPunchOut(double punchOut) {
+        this.punchOut = punchOut;
+    }
+    
+    public void logWorkSession() {
+        hoursWorked += (punchOut - punchIn);
+    }
+
     public double getHoursWorked() {
         return hoursWorked;
     }
@@ -88,5 +108,7 @@ getOvertimeHours
     public double getTotalPay(){
         return (getRegularHours() * getPayRate()) + (getOvertimeHours() * (getPayRate() * 1.5));
     }
+
+
 
 }
