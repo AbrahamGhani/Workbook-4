@@ -1,4 +1,6 @@
 package com.pluralsight;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Employee {
 
@@ -57,22 +59,34 @@ public class Employee {
         this.payRate = payRate;
     }
 
+    public void punchIn(double time) {
+        this.punchIn = time;
+    }
+
+    public void punchIn(){
+        LocalDateTime now = LocalDateTime.now();
+        double time = now.getHour() + now.getMinute() / 60.0;
+        this.punchIn = time;
+    }
+
     public double getPunchIn() {
         return punchIn;
     }
 
-    public void setPunchIn(double punchIn) {
-        this.punchIn = punchIn;
+    public void punchOut(double time) {
+        this.punchOut = time;
+    }
+
+    public void punchOut(){
+        LocalDateTime now = LocalDateTime.now();
+        double time = now.getHour() + now.getMinute() / 60.0;
+        this.punchIn = time;
     }
 
     public double getPunchOut() {
         return punchOut;
     }
 
-    public void setPunchOut(double punchOut) {
-        this.punchOut = punchOut;
-    }
-    
     public void logWorkSession() {
         hoursWorked += (punchOut - punchIn);
     }
